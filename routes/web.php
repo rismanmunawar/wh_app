@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController; //Mendaftarkan Controller yang akan di eksekusi
-
+use App\Http\Controllers\PositionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,5 +29,6 @@ Route::middleware('auth')->group(
         Route::get('/', function () {
             return view('home', ['title' => 'Home']);
         })->name('home');
+        Route::resource('positions', PositionController::class);
     }
 );
