@@ -1,5 +1,11 @@
 @extends('app')
 @section('content')
+@if(session('success'))
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Hai {{ Auth()->user()->name }} </strong> {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
 <div class="text-end mb-2">
     <a class="btn btn-success" href="{{ route('positions.create') }}"> Add Position</a>
@@ -15,9 +21,10 @@
         </tr>
     </thead>
     <tbody>
+        <?php $i = 1; ?>
         @foreach ($positions as $position)
         <tr>
-            <td>{{ $position->id }}</td>
+            <td>{{ $i++ }}</td>
             <td>{{ $position->name }}</td>
             <td>{{ $position->keterangan }}</td>
             <td>{{ $position->alias }}</td>

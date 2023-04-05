@@ -23,7 +23,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route ('positions.index')}}">Position</a>
                     </li>
-                    @if(auth()->user()->position == 0)
+                    <!-- @if(auth()->user()->position == 0) -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Link
@@ -37,7 +37,7 @@
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-                    @endif
+                    <!-- @endif -->
                     <li class="nav-item">
                         <a class="nav-link disabled">Link</a>
                     </li>
