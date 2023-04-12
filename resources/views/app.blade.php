@@ -29,10 +29,12 @@
                         <a class="nav-link" href="{{ route ('departments.index')}}">Departement</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form class="text-danger" action="{{ route('logout') }}" method="POST">
+                  @csrf
+                  <button class="btn btn-outline-none"><i class="fa fa-sign-out"></i> Logout
+                </button>
                 </form>
+
             </div>
         </div>
     </nav>

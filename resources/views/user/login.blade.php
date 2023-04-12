@@ -15,27 +15,33 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title text-center">Login</h5>
+                <h5 class="card-title text-center"><strong>Login</strong></h5>
 
                 <form action="{{ route('login.action') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label>Username / Email</label>
-                        <input class="form-control" type="email" name="email" value="{{ old('email') }}" autofocus />
+                        <label><strong>Username / Email :</strong></label>
+                        <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="Masukan Email Anda!" />
                     </div>
                     <div class="mb-3">
-                        <label>Password</label>
-                        <input class="form-control" type="password" name="password" />
+                        <label><strong>Password :</strong></label>
+                        <input class="form-control" type="password" name="password" placeholder="Masukan Password Anda!"/>
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-primary">Login</button>
-                        <a class="btn btn-danger mx-2" href="{{ route('home') }}">Back</a>
                     </div>
                 </form>
                 <p class="small text-center">Don't have an account <a href="/register" class="link-underline link-underline-opacity-0">Register</a>
                 </p>
             </div>
         </div>
+
+        <style>
+          .card {
+           background-color: #ffffff;
+           border: 1px solid #c6c6c6;
+             }
+</style>
     </div>
 </div>
 

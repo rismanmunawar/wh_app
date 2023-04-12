@@ -8,12 +8,13 @@
 @endif
 
 <div class="text-end mb-2">
-    <a class="btn btn-success" href="{{ route('positions.create') }}"> Add Position</a>
+    <!-- <a class="btn btn-success" href="{{ route('positions.create') }}"> Add Position</a> -->
+    <a class="btn btn-success" href="{{ route('positions.create') }}"> <i class="fa fa-plus"></i> Add Position</a>
 </div>
 
 <table class="table table-striped">
     <thead>
-        <tr>
+        <tr class="table-active">
             <th scope="col">No</th>
             <th scope="col">Nama</th>
             <th scope="col">Keterangan</th>
@@ -24,7 +25,7 @@
     <tbody>
         <?php $i = 1; ?>
         @foreach ($positions as $position)
-        <tr>
+        <tr class="table-hover-color">
             <td>{{ $i++ }}</td>
             <td>{{ $position->name }}</td>
             <td>{{ $position->keterangan }}</td>
