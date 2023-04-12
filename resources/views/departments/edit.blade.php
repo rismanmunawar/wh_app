@@ -25,15 +25,19 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Manager ID :</strong>
-                <input type="text" name="manager_id" value="{{ $department->manager_id}}" class="form-control" placeholder=" manager_id">
+                <strong>Manager :</strong>
+                <select name="manager_id" class="form-control">
+                    @foreach ($managers as $manager)
+                    <option value="{{ $manager->id}}">{{$manager->name}}</option>
+                    @endforeach
+                </select>
                 @error('manager_id')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
             </div>
 
-        <button type="submit" class="btn btn-primary mt-4">Submit</button>
-        <a button type="submit" class="btn btn-danger mt-4" href="{{ route('departments.index') }}">Back</a>
+            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+            <a button type="submit" class="btn btn-danger mt-4" href="{{ route('departments.index') }}">Back</a>
         </div>
     </div>
 </form>

@@ -30,10 +30,10 @@
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
             </div>
-        
-        <button type="submit" class="btn btn-primary mt-4">Submit</button>
-        <a button type="submit" class="btn btn-danger mt-4" href="{{ route('positions.index') }}">Back</a>
-    </div>
+
+            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+            <a button type="submit" class="btn btn-danger mt-4" href="{{ route('positions.index') }}">Back</a>
+        </div>
     </div>
 </form>
 @endsection
