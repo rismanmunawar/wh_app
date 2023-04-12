@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -29,4 +29,8 @@
         </tr>
     </tbody>
 </table>
+@endsection
+
+@section('styles')
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 @endsection

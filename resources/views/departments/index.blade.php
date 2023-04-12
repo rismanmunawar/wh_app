@@ -8,30 +8,36 @@
 @endif
 
 <div class="text-end mb-2">
-    <a class="btn btn-success" href="{{ route('positions.create') }}"> Add Position</a>
+    <a class="btn btn-success" href="{{ route('departments.create') }}"> Add Departement</a>
 </div>
 
 <table class="table table-striped">
-    <thead>
+    <thead class="thead-dark">
         <tr>
             <th scope="col">No</th>
             <th scope="col">Nama</th>
-            <th scope="col">Keterangan</th>
-            <th scope="col">Singkatan</th>
+            <th scope="col">Lokasi</th>
+            <th scope="col">Manager ID</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         <?php $i = 1; ?>
-        @foreach ($positions as $position)
+        @foreach ($departments as $department)
         <tr>
             <td>{{ $i++ }}</td>
-            <td>{{ $position->name }}</td>
-            <td>{{ $position->keterangan }}</td>
-            <td>{{ $position->alias }}</td>
+            <td>{{ $department->name }}</td>
+            <td>{{ $department->location }}</td>
+            <td>{{ $department->manager_id }}</td>
             <td>
-            <form action="{{ route('positions.destroy',$position->id) }}" method="Post">
-                    <a href="{{ route('positions.edit',$position->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                <!-- <form action="{{ route('departments.destroy',$department->id) }}" method="Post">
+                    <a class="btn btn-primary" href="{{ route('departments.edit',$department->id) }}">Edit</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form> -->
+                <form action="{{ route('departments.destroy',$department->id) }}" method="Post">
+                    <a href="{{ route('departments.edit',$department->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                     @csrf
                     @method('DELETE')
                     <button class="btn" onclick="confirmDelete()"><i class="fa fa-trash text-danger"></i></button>
@@ -40,7 +46,9 @@
                       function confirmDelete() {
                          if (confirm("Apakah Anda yakin akan menghapus data ini?")) {
                              document.getElementById("delete-form").submit();
-                         }
+                         } else {
+                            return false;
+                          }
                              }
                     </script>
                 </form>
