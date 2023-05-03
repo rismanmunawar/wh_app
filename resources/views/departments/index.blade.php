@@ -28,14 +28,8 @@
             <td>{{ $i++ }}</td>
             <td>{{ $department->name }}</td>
             <td>{{ $department->location }}</td>
-            <td>{{ $department->manager_id }}</td>
+            <td>{{ $department->getManager->name }}</td>
             <td>
-                <!-- <form action="{{ route('departments.destroy',$department->id) }}" method="Post">
-                    <a class="btn btn-primary" href="{{ route('departments.edit',$department->id) }}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form> -->
                 <form action="{{ route('departments.destroy',$department->id) }}" method="Post">
                     <a href="{{ route('departments.edit',$department->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                     @csrf
@@ -43,13 +37,13 @@
                     <button class="btn" onclick="confirmDelete()"><i class="fa fa-trash text-danger"></i></button>
 
                     <script>
-                      function confirmDelete() {
-                         if (confirm("Apakah Anda yakin akan menghapus data ini?")) {
-                             document.getElementById("delete-form").submit();
-                         } else {
-                            return false;
-                          }
-                             }
+                        function confirmDelete() {
+                            if (confirm("Apakah Anda yakin akan menghapus data ini?")) {
+                                document.getElementById("delete-form").submit();
+                            } else {
+                                return false;
+                            }
+                        }
                     </script>
                 </form>
             </td>
