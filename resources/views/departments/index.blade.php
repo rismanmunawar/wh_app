@@ -8,17 +8,20 @@
 @endif
 
 <div class="text-end mb-2">
+    <a class="btn btn border border" href="department/exportPdf" target="_blank">
+        <i class="fa-solid fa-print"></i>
+    </a>
     <a class="btn btn-success" href="{{ route('departments.create') }}"> <i class="fa fa-plus"></i> Add Department</a>
 </div>
 
-<table class="table table-striped">
-    <thead class="thead-dark">
-        <tr class="table-active">
-            <th scope="col">No</th>
-            <th scope="col">Nama</th>
-            <th scope="col">Lokasi</th>
-            <th scope="col">Manager ID</th>
-            <th scope="col">Action</th>
+<table id="example" class="table table-striped" style="width:100%">
+    <thead class="thead-dark>
+                <tr class=" table-active">
+        <th scope="col">No</th>
+        <th scope="col">Nama</th>
+        <th scope="col">Lokasi</th>
+        <th scope="col">Manager ID</th>
+        <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -51,14 +54,11 @@
         @endforeach
     </tbody>
 </table>
-<div class="col-sm-12 mb-2">
-    <div class="d-flex justify-content-start">
-        <a class="btn btn-sm border border" href="department/exportPdf" target="_blank">
-            <i class="fa-solid fa-print">
-                Print PDF
-            </i>
-        </a>
-    </div>
-</div>
-{{$departments->links()}}
+@endsection
+@section('js')
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
 @endsection
