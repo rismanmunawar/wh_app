@@ -28,7 +28,7 @@
                 <strong>Manager :</strong>
                 <select name="manager_id" class="form-control">
                     @foreach ($managers as $manager)
-                    <option value="{{ $manager->id}}">{{$manager->name}}</option>
+                    <option value="{{ $manager->id}}" {{($department->manager_id == $manager->id) ? 'selected' : ''}}>{{$manager->name}}</option>
                     @endforeach
                 </select>
                 @error('manager_id')

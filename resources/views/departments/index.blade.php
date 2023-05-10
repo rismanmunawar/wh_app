@@ -51,4 +51,14 @@
         @endforeach
     </tbody>
 </table>
+<div class="col-sm-12 mb-2">
+    <div class="d-flex justify-content-start">
+        <a class="btn btn-sm border border" href="department/exportPdf" target="_blank">
+            <i class="fa-solid fa-print">
+                Print PDF
+            </i>
+        </a>
+    </div>
+</div>
+{{$departments->links()}}
 @endsection
