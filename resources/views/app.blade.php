@@ -34,10 +34,9 @@
                 </ul>
                 <form class="text-danger" action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button class="btn btn-outline-none" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini')"><i class="fa fa-sign-out"></i> Logout
+                    <button class="btn btn-outline-none" onclick="return confirm('Apakah Anda yakin ingin keluar?')"><i class="fa fa-sign-out"></i> Logout
                     </button>
                 </form>
-
             </div>
         </div>
     </nav>

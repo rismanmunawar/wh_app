@@ -1,4 +1,4 @@
-@extends('app')
+@extends('sidebar')
 @section('content')
 @if(session('success'))
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -9,7 +9,7 @@
 
 <div class="text-end mb-2">
     <a class="btn btn border border" href="department/exportPdf" target="_blank">
-        <i class="fa-solid fa-print"></i>
+        <i class="nav-icon fas fa-print"></i>
     </a>
     <a class="btn btn-success" href="{{ route('departments.create') }}"> <i class="fa fa-plus"></i> Add Department</a>
 </div>
@@ -34,7 +34,7 @@
             <td>{{ $department->getManager->name }}</td>
             <td>
                 <form action="{{ route('departments.destroy',$department->id) }}" method="Post">
-                    <a href="{{ route('departments.edit',$department->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{{ route('departments.edit',$department->id) }}"><i class="nav-icon fas fa-edit"></i></a>
                     @csrf
                     @method('DELETE')
                     <button class="btn" onclick="confirmDelete()"><i class="fa fa-trash text-danger"></i></button>

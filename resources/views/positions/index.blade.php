@@ -1,4 +1,4 @@
-@extends('app')
+@extends('sidebar')
 @section('content')
 @if(session('success'))
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -32,7 +32,7 @@
             <td>{{ $position->alias }}</td>
             <td>
             <form action="{{ route('positions.destroy',$position->id) }}" method="Post">
-                    <a href="{{ route('positions.edit',$position->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{{ route('positions.edit',$position->id) }}"><i class="nav-icon fas fa-edit"></i></a>
                     @csrf
                     @method('DELETE')
                     <button class="btn" onclick="confirmDelete()"><i class="fa fa-trash text-danger"></i></button>

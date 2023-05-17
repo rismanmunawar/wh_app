@@ -1,4 +1,4 @@
-@extends('app')
+@extends('sidebar')
 @section('content')
 
 <form action="{{ route('departments.store') }}" method="POST" enctype="multipart/form-data">
