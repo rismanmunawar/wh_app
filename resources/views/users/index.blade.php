@@ -32,8 +32,8 @@
             <td>{{ $i++ }}</td>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
-            <td>{{ (isset($user->position->name)) ? $user->position->name : 'Not Found' }}</td>
-            <td>{{ (isset($user->department->nama) ? $user->department->nama  : 'Not Found') }}</td>
+            <td>{{ (isset($user->positions->name)) ? $user->positions->name : 'Not Found' }}</td>
+            <td>{{ (isset($user->departments->nama) ? $user->departments->nama  : 'Not Found') }}</td>
             <td>
                 <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                     <a href="{{ route('users.edit', $user->id) }}"><i class="nav-icon fas fa-edit"></i></a>

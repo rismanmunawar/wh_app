@@ -8,8 +8,8 @@
 @endif
 
 <div class="text-end mb-2">
-    <a class="btn btn border border" href="department/exportPdf" target="_blank">
-        <i class="nav-icon fas fa-print"></i>
+    <a class="btn btn-primary" href="department/exportPdf" target="_blank">
+        <i class="nav-icon fas fa-print" title="Print PDF"></i>
     </a>
     <a class="btn btn-success" href="{{ route('departments.create') }}"> <i class="fa fa-plus"></i> Add Department</a>
 </div>

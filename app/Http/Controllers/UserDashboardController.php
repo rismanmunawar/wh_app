@@ -23,7 +23,7 @@ class UserDashboardController extends Controller
         $users = User::Where('position', 'user')->get();
         $positions = Position::all();
         $departments = Department::all();
-        return view('users.create', compact('users', 'title','positions','departments'));
+        return view('users.create', compact('users', 'title', 'positions', 'departments'));
     }
 
     public function store(Request $request)
@@ -41,12 +41,12 @@ class UserDashboardController extends Controller
         return redirect()->route('users.index')->with('success', 'user has been created successfully.');
     }
 
-    public function edit(user $user)
+    public function edit(User $user)
     {
         $title = "Edit Data user";
         $positions = Position::all();
         $departments = Department::all();
-        return view('users.edit', compact('user', 'title', "positions",'departments'));
+        return view('users.edit', compact('user', 'title', "positions", 'departments'));
     }
 
     /**
@@ -57,7 +57,7 @@ class UserDashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, user $user)
+    public function update(Request $request, User $user)
     {
         $request->validate([
             'name' => 'required',

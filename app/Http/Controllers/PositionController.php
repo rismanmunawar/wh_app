@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportPositions;
 use App\Models\Position;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportUsers;
 
 class PositionController extends Controller
 {
@@ -64,5 +67,10 @@ class PositionController extends Controller
     {
         $position->delete();
         return redirect()->route('positions.index')->with('success', 'Position has been deleted successfully');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new ExportPositions, 'Positions.xlsx');
     }
 }

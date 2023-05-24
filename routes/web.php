@@ -37,9 +37,10 @@ Route::middleware('auth')->group(
         Route::get('/', function () {
             return view('home', ['title' => 'Home']);
         })->name('home');
-        Route::resource('positions', PositionController::class);
+        Route::resource('positions', PositionController::class); 
         Route::resource('departments', DepartmentController::class);
         Route::resource('users', UserDashboardController::class);
         Route::get('department/exportPdf', [DepartmentController::class, 'exportPdf']);
+        Route::get('position/export-excel', [PositionController::class, 'exportExcel'])->name('positions.exportExcel');
     }
 );

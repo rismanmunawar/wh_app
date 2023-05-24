@@ -46,12 +46,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function position()
+    public function positions()
     {
         return $this->belongsTo(Position::class, 'position', 'id');
     }
 
-    public function department()
+    public function departments()
     {
         return $this->hasOne(Department::class, 'id', 'department');
     }

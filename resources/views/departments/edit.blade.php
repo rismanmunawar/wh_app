@@ -8,8 +8,8 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                <input type="text" name="name" value="{{ $department->name}}" class=" form-control" placeholder="Nama">
-                @error('name')
+                <input type="text" name="nama" value="{{ $department->nama}}" class=" form-control" placeholder="Nama">
+                @error('nama')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
             </div>

@@ -25,6 +25,15 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Password :</strong>
+                <input type="text" name="password" value="{{ $user->password}}" class="form-control" placeholder="Password">
+                @error('password')
+                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>Posisi :</strong>
                 <select name="position" class="form-select">
                     @foreach ($positions as $position)

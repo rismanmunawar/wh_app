@@ -8,7 +8,13 @@
 @endif
 
 <div class="text-end mb-2">
-    <!-- <a class="btn btn-success" href="{{ route('positions.create') }}"> Add Position</a> -->
+    <a class="btn btn-primary" href="position/exportPdf" target="_blank">
+        <i class="nav-icon fas fa-print" title="Print PDF"></i>
+    </a>
+    <a class="btn btn-success" href="position/export-excel" target="_blank">
+        <i class="nav-icon fas fa-print" title="Print Excel"></i>
+    </a>
+
     <a class="btn btn-success" href="{{ route('positions.create') }}"> <i class="fa fa-plus"></i> Add Position</a>
 </div>
 

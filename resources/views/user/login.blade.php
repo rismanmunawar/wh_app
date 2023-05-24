@@ -17,7 +17,7 @@
 </head>
 
 <body class="hold-transition login-page">
-    
+
     <div class="login-box">
         <div class="login-logo">
             <a href="../../index2.html"><b>Wh</b>App</a>
@@ -30,12 +30,12 @@
                 <form action="{{ route('login.action') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label><strong>Username / Email :</strong></label>
+                        <label><strong>Email :</strong></label>
                         <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="Masukan Email Anda!" />
                     </div>
                     <div class="mb-3">
                         <label><strong>Password :</strong></label>
-                        <input class="form-control" type="password" name="password" placeholder="Masukan Password Anda!"/>
+                        <input class="form-control" type="password" name="password" placeholder="Masukan Password Anda!" />
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-primary">Login</button>
