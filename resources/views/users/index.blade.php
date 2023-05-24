@@ -8,31 +8,35 @@
 @endif
 
 <div class="text-end mb-2">
-    <!-- <a class="btn btn-success" href="{{ route('positions.create') }}"> Add Position</a> -->
-    <a class="btn btn-success" href="{{ route('positions.create') }}"> <i class="fa fa-plus"></i> Add Position</a>
+    <!-- <a class="btn btn border border" href="department/exportPdf" target="_blank">
+        <i class="nav-icon fas fa-print"></i>
+    </a> -->
+    <a class="btn btn-success" href="{{ route('users.create') }}"> <i class="fa fa-plus"></i> Add User</a>
 </div>
 
-<table id="example" class="table table-hover">
+<table id="example" class="table table-hover" style="width:100%">
     <thead class="thead-dark">
         <tr class="table-active">
             <th scope="col">No</th>
             <th scope="col">Nama</th>
-            <th scope="col">Keterangan</th>
-            <th scope="col">Singkatan</th>
+            <th scope="col">Email</th>
+            <th scope="col">Posisi</th>
+            <th scope="col">Department</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         <?php $i = 1; ?>
-        @foreach ($positions as $position)
-        <tr>
+        @foreach ($users as $user)
+        <tr class="table-hover-color">
             <td>{{ $i++ }}</td>
-            <td>{{ $position->name }}</td>
-            <td>{{ $position->keterangan }}</td>
-            <td>{{ $position->alias }}</td>
+            <td>{{ $user->name }}</td>
+            <td>{{ $user->email }}</td>
+            <td>{{ (isset($user->position->name)) ? $user->position->name : 'Not Found' }}</td>
+            <td>{{ (isset($user->department->nama) ? $user->department->nama  : 'Not Found') }}</td>
             <td>
-                <form action="{{ route('positions.destroy',$position->id) }}" method="Post">
-                    <a href="{{ route('positions.edit',$position->id) }}"><i class="nav-icon fas fa-edit"></i></a>
+                <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                    <a href="{{ route('users.edit', $user->id) }}"><i class="nav-icon fas fa-edit"></i></a>
                     @csrf
                     @method('DELETE')
                     <button class="btn" onclick="confirmDelete()"><i class="fa fa-trash text-danger"></i></button>
@@ -41,6 +45,8 @@
                         function confirmDelete() {
                             if (confirm("Apakah Anda yakin akan menghapus data ini?")) {
                                 document.getElementById("delete-form").submit();
+                            } else {
+                                return false;
                             }
                         }
                     </script>

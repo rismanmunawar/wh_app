@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController; //Mendaftarkan Controller yang akan di eksekusi
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\UserDashboardController;
 use App\Model\Position;
 use App\Model\User;
 use App\Model\Department;
@@ -38,6 +39,7 @@ Route::middleware('auth')->group(
         })->name('home');
         Route::resource('positions', PositionController::class);
         Route::resource('departments', DepartmentController::class);
+        Route::resource('users', UserDashboardController::class);
         Route::get('department/exportPdf', [DepartmentController::class, 'exportPdf']);
     }
 );

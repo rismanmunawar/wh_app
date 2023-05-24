@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WhApp | Dashboard</title>
+    <title>WhApp | Web FrameWork</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -19,16 +19,21 @@
     <!-- JQVMap -->
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins')}}/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('AdminLTE/dist')}}/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{asset('AdminLTE/dist')}}/css/adminlte.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins')}}/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins')}}/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins')}}/summernote/summernote-bs4.min.css">
+    <!-- Calendar -->
+    <!-- Calendar -->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' rel='stylesheet' />
     <!-- Data Table Css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -41,33 +46,19 @@
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link pr-5" data-toggle="dropdown" href="#">
-                        <i class="far fa-user"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">Akun</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="login" class="dropdown-item">
-                            <i class="fas fa-user mr-2"></i>Log Out
-                        </a>
-                    </div>
-                </li>
-            </ul>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: 20px; width:100%">
+                <strong>Hai {{ Auth()->user()->name }} </strong>
+            </div>
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="/" class="brand-link">
-                <img src="{{asset('AdminLTE/dist')}}/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-bold">WhApp</span>
-            </a>
-
+            <div class="text-center" style="display: flex; align-items: center;margin-left:20px;">
+                <img src="{{asset('AdminLTE/dist')}}/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8; width: 50px; height: 50px; margin-right: 10px;margin-top: 10px;">
+                <span class="brand-text" style="font-size: 23px; margin-top: 10px; color: white;">Wh<strong>App</strong></span>
+            </div>
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional)
@@ -125,12 +116,29 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
+                            <a href="{{ route('users.index')}}" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     User
                                 </p>
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-cogs"></i>
+                                <p>
+                                    Setting
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="login" class="nav-link">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <p>Log Out</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                     </ul>
@@ -150,7 +158,7 @@
                         <section class="content">
                             <div class="container-fluid">
                                 <div class="card">
-                                    <h1 class="card-header" style="background-color: #00CED1;">@yield('title',$title)</h1>
+                                    <h1 class="card-header" style="background-color: #343A40; color:aliceblue">@yield('title',$title)</h1>
                                     <div class="card-body">
                                         @yield('content')
                                     </div>
@@ -182,7 +190,7 @@
     </div>
     <!-- ./wrapper -->
 
-    <!-- jQuery -->
+    jQuery
     <script src="{{asset('AdminLTE/plugins')}}/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="{{asset('AdminLTE/plugins')}}/jquery-ui/jquery-ui.min.js"></script>
@@ -216,6 +224,18 @@
     <script src="{{asset('AdminLTE/dist')}}/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{asset('AdminLTE/dist')}}/js/pages/dashboard.js"></script>
+    <!-- Calendar -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                // Konfigurasi kalender, misalnya sumber acara, tampilan, dll.
+            });
+            calendar.render();
+        });
+    </script>
     <!-- JQuery Datatables -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>

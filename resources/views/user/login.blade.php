@@ -1,54 +1,10 @@
-<!-- <div class="row">
-    <div class="col-md-4" style="margin: 50px auto">
-
-        @if(session('success'))
-        <p class="alert alert-success">{{ session('success') }}</p>
-        @endif
-        @if($errors->any())
-        @foreach($errors->all() as $err)
-        <p class="alert alert-danger">{{ $err }}</p>
-        @endforeach
-        @endif
-
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title text-center"><strong>Login</strong></h5>
-
-                <form action="{{ route('login.action') }}" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <label><strong>Username / Email :</strong></label>
-                        <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="Masukan Email Anda!" />
-                    </div>
-                    <div class="mb-3">
-                        <label><strong>Password :</strong></label>
-                        <input class="form-control" type="password" name="password" placeholder="Masukan Password Anda!"/>
-                    </div>
-                    <div class="mb-3">
-                        <button class="btn btn-primary">Login</button>
-                    </div>
-                </form>
-                <p class="small text-center">Don't have an account <a href="/register" class="link-underline link-underline-opacity-0">Register</a>
-                </p>
-            </div>
-        </div>
-
-        <style>
-          .card {
-           background-color: #ffffff;
-           border: 1px solid #c6c6c6;
-             }
-</style>
-    </div>
-</div> -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Log in</title>
+    <title>WhApp | Log in</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -57,13 +13,14 @@
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins')}}icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('AdminLTE/dist')}}/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{asset('AdminLTE/dist')}}/css/adminlte.css">
 </head>
 
 <body class="hold-transition login-page">
+    
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
+            <a href="../../index2.html"><b>Wh</b>App</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">

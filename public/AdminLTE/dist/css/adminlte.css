@@ -66,7 +66,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+  background-color: #181717;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -34856,14 +34856,14 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 
 .login-logo a,
 .register-logo a {
-  color: #495057;
+  color: #fff;
 }
 
 .login-page,
 .register-page {
   -ms-flex-align: center;
   align-items: center;
-  background-color: #e9ecef;
+  background-image: url('../img/background.jpg');
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -34893,11 +34893,12 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 
 .login-card-body,
 .register-card-body {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5); /* Warna latar belakang transparan */
   border-top: 0;
   color: #666;
   padding: 20px;
 }
+
 
 .login-card-body .input-group .form-control,
 .register-card-body .input-group .form-control {

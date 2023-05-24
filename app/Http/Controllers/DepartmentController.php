@@ -26,7 +26,7 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'nama' => 'required',
             'location' => 'required',
             'manager_id' => 'required',
         ]);
@@ -54,7 +54,7 @@ class DepartmentController extends Controller
     public function update(Request $request, Department $department)
     {
         $request->validate([
-            'name' => 'required',
+            'nama' => 'required',
             'location' => 'required',
             'manager_id' => 'required',
         ]);

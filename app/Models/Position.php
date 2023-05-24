@@ -9,4 +9,8 @@ class Position extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'keterangan', 'alias'];
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }

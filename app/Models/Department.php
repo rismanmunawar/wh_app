@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'location', 'manager_id'];
+    protected $fillable = ['nama', 'location', 'manager_id'];
 
     public function manager()
     {
