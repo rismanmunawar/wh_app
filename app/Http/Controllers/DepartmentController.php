@@ -22,7 +22,6 @@ class DepartmentController extends Controller
         $managers = User::Where('position', 'manager')->get();
         return view('departments.create', compact('managers', 'title'));
     }
-
     public function store(Request $request)
     {
         $request->validate([
