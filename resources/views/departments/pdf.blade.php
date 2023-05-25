@@ -21,7 +21,7 @@
         @foreach ($departments as $department)
         <tr class="table-hover-color">
             <td>{{ $i++ }}</td>
-            <td>{{ $department->name }}</td>
+            <td>{{ $department->nama }}</td>
             <td>{{ $department->location }}</td>
             <td>{{ $department->getManager->name }}</td>
         </tr>
