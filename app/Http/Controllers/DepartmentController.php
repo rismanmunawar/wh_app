@@ -19,7 +19,7 @@ class DepartmentController extends Controller
     public function create()
     {
         $title = "Add Data Department";
-        $managers = User::Where('position', 'manager')->get();
+        $managers = User::Where('position', '1')->get();
         return view('departments.create', compact('managers', 'title'));
     }
     public function store(Request $request)

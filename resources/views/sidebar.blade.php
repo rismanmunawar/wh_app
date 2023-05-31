@@ -32,7 +32,9 @@
     <!-- Data Table Css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
-
+    <!-- Cek -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
 
 </head>
 
@@ -105,7 +107,7 @@
                                 </p>
                             </a>
                         </li>
-
+                    @if(Auth::user()->position == 1)
                         <li class="nav-item">
                             <a href="{{ route('departments.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-building"></i>
@@ -122,6 +124,33 @@
                                     User
                                 </p>
                             </a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                            <a href="#" class="nav-link">
+                            <i class="fas fa-cube"></i>
+                                <p>
+                                    Master Data
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('warehouses.index')}}" class="nav-link">
+                                    <i class="fas fa-warehouse"></i>
+                                        <p>WareHouse</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('goods.index')}}" class="nav-link">
+                                    <i class="fas fa-box"></i>
+                                        <p>Goods</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -140,6 +169,8 @@
                                 </li>
                             </ul>
                         </li>
+
+                        
 
                     </ul>
                 </nav>
@@ -240,6 +271,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <!-- cek -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
     @yield('js')
 </body>
 

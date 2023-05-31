@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController; //Mendaftarkan Controller yang akan di 
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\WarehouseController;
+use App\Http\Controllers\GoodController;
 use App\Model\Position;
 use App\Model\User;
 use App\Model\Department;
@@ -32,14 +34,17 @@ Route::get('logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 
+
 Route::middleware('auth')->group(
     function () {
         Route::get('/', function () {
             return view('home', ['title' => 'Home']);
         })->name('home');
-        Route::resource('positions', PositionController::class); 
+        Route::resource('positions', PositionController::class);
         Route::resource('departments', DepartmentController::class);
         Route::resource('users', UserDashboardController::class);
+        Route::resource('warehouses', WarehouseController::class);
+        Route::resource('goods', GoodController::class);
         Route::get('department/exportPdf', [DepartmentController::class, 'exportPdf']);
         Route::get('position/export-excel', [PositionController::class, 'exportExcel'])->name('positions.exportExcel');
     }

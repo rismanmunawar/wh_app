@@ -8,14 +8,17 @@
 @endif
 
 <div class="text-end mb-2">
-    <a class="btn btn-primary" href="position/exportPdf" target="_blank">
-        <i class="nav-icon fas fa-print" title="Print PDF"></i>
-    </a>
-    <a class="btn btn-success" href="position/export-excel" target="_blank">
-        <i class="nav-icon fas fa-print" title="Print Excel"></i>
-    </a>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="printDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-print"></i> Cetak
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="printDropdown">
+            <li><a class="dropdown-item" href="position/exportPdf" target="_blank"><i class="fas fa-file-word"></i> Word</a></li>
+            <li><a class="dropdown-item" href="position/export-excel" target="_blank"><i class="fas fa-file-excel"></i> Excel</a></li>
+        </ul>
 
-    <a class="btn btn-success" href="{{ route('positions.create') }}"> <i class="fa fa-plus"></i> Add Position</a>
+        <a class="btn btn-success" href="{{ route('positions.create') }}"> <i class="fa fa-plus"></i> Add Position</a>
+    </div>
 </div>
 
 <table id="example" class="table table-hover">
