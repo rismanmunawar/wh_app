@@ -35,6 +35,8 @@
     <!-- Cek -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <!-- JQuery UI Autocomplete -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
 
 </head>
 
@@ -63,28 +65,6 @@
             </div>
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional)
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="{{asset('AdminLTE/dist')}}/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
-                    </div>
-                </div> -->
-
-                <!-- SidebarSearch Form -->
-                <!-- <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div> -->
-
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -107,7 +87,7 @@
                                 </p>
                             </a>
                         </li>
-                    @if(Auth::user()->position == 1)
+                        @if(Auth::user()->position == 1)
                         <li class="nav-item">
                             <a href="{{ route('departments.index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-building"></i>
@@ -125,10 +105,10 @@
                                 </p>
                             </a>
                         </li>
-                    @endif
-                    <li class="nav-item">
+                        @endif
+                        <li class="nav-item">
                             <a href="#" class="nav-link">
-                            <i class="fas fa-cube"></i>
+                                <i class="fas fa-cube"></i>
                                 <p>
                                     Master Data
                                     <i class="fas fa-angle-left right"></i>
@@ -137,7 +117,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('warehouses.index')}}" class="nav-link">
-                                    <i class="fas fa-warehouse"></i>
+                                        <i class="fas fa-warehouse"></i>
                                         <p>WareHouse</p>
                                     </a>
                                 </li>
@@ -146,7 +126,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('goods.index')}}" class="nav-link">
-                                    <i class="fas fa-box"></i>
+                                        <i class="fas fa-box"></i>
                                         <p>Goods</p>
                                     </a>
                                 </li>
@@ -170,7 +150,7 @@
                             </ul>
                         </li>
 
-                        
+
 
                     </ul>
                 </nav>
@@ -273,6 +253,9 @@
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <!-- cek -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+    <!-- JQuery UI Autocomplete -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     @yield('js')
 </body>
 

@@ -7,6 +7,9 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\GoodController;
+use App\Http\Controllers\RABController;
+use App\Http\Controllers\ProductController;
+
 use App\Model\Position;
 use App\Model\User;
 use App\Model\Department;
@@ -47,5 +50,7 @@ Route::middleware('auth')->group(
         Route::resource('goods', GoodController::class);
         Route::get('department/exportPdf', [DepartmentController::class, 'exportPdf']);
         Route::get('position/export-excel', [PositionController::class, 'exportExcel'])->name('positions.exportExcel');
+        Route::resource('rabs', RABController::class);
+        Route::get('search/product', [ProductController::class, 'autocomplete'])->name('searchproduct');
     }
 );
