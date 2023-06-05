@@ -51,6 +51,9 @@ Route::middleware('auth')->group(
         Route::get('department/exportPdf', [DepartmentController::class, 'exportPdf']);
         Route::get('position/export-excel', [PositionController::class, 'exportExcel'])->name('positions.exportExcel');
         Route::resource('rabs', RABController::class);
+
         Route::get('search/product', [ProductController::class, 'autocomplete'])->name('searchproduct');
+
+        Route::resource('products', ProductController::class);
     }
 );

@@ -25,11 +25,11 @@ class RABController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
-            'location' => 'required',
-            'manager_id' => 'required',
+            'no_rab' => 'required',
+            // 'location' => 'required',
+            // 'manager_id' => 'required',
         ]);
-
+        dd($request);
         RAB::create($request->post());
 
         return redirect()->route('rabs.index')->with('success', 'RAB has been created successfully.');

@@ -15,4 +15,8 @@ class ProductController extends Controller
 
         return response()->json($data);
     }
+    public function show(Product $product)
+    {
+     return response()-> json($product);
+    }
 }

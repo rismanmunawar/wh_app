@@ -134,6 +134,32 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
+                                <i class="fas fa-cube"></i>
+                                <p>
+                                    Master Data RAB
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('warehouses.index')}}" class="nav-link">
+                                    <i class="fas fa-box"></i>
+                                        <p>Product</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('rabs.index')}}" class="nav-link">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        <p>Rabs</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-cogs"></i>
                                 <p>
                                     Setting
