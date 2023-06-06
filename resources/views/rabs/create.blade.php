@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>No :</strong>
-                <input type="text" id="no_rab" name="no_rab" class="form-control" placeholder="Masukan No RAB">
+                <strong>No RAB:</strong>
+                <input type="text" name="no_rab" class="form-control" placeholder="Masukan No RAB">
                 @error('no_rab')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
@@ -15,18 +15,26 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Tanggal :</strong>
-                <input type="date" name="date" class="form-control" placeholder="Masukan Lokasi">
+                <strong>Tanggal RAB:</strong>
+                <input type="date" name="date" class="form-control" placeholder="Masukan Tanggal RAB">
                 @error('date')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
             </div>
-            <label for="id_penyusun"><strong>Penyusun :</strong></label>
-            <select name="id_penyusun" class="form-control">
-                @foreach ($managers as $manager)
-                <option value="{{ $manager->id}}">{{$manager->name}}</option>
-                @endforeach
-            </select>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Penyusun :</strong>
+                    <select name="id_penyusun" id="id_penyusun" class="form-select">
+                        <option value="">Pilih</option>
+                        @foreach ($managers as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('id_penyusun')
+                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
         </div>
         <div class="row col-xs-12 col-sm-12 col-md-12 mt-3">
             <div class="form-group col-10">
@@ -53,24 +61,7 @@
                         </tr>
                     </thead>
                     <tbody id="detail">
-                        <tr>
-                            <td>
-                                <span>1</span>
-                                <input type="hidden" name="productId[]" class="Form-control" disabled>
-                            </td>
-                            <td>
-                                <input type="text" name="productName[]" class="Form-control">
-                            </td>
-                            <td>
-                                <input type="number" name="price[]" class="Form-control">
-                            </td>
-                            <td>
-                                <input type="number" name="qty[]" class="Form-control">
-                            </td>
-                            <td>
-                                <input type="number" name="sub_total[]" class="Form-control">
-                            </td>
-                        </tr>
+                       
                     </tbody>
                 </table>
             </div>
@@ -102,45 +93,44 @@
         },
         select: function(event, ui) {
             $('#search').val(ui.item.label);
-            console.log(ui.item);
+            // console.log(ui.item);
             add(ui.item.id);
             return false;
         }
     });
 
     function add(id) {
-        console.log(id);
-        const path = "{{route('products.index') }}/" + id;
+        // console.log(id);
+        const path = "{{ route('products.index') }}/" + id;
         var html = "";
-        var no=0;
+        var no = 0;
         $.ajax({
             url: path,
             type: 'GET',
-            dataType: 'json',
+            dataType: "json",
 
             success: function(data) {
-                // console.log(data);
                 if ($('#detail tr').length > no) {
-                    html = $('#detail tr').html();
+                    html = $('#detail').html();
                     no = $('#detail tr').length;
                 }
                 no++;
-                html+='<tr>' +
+                html += '<tr>' +
                     '<td>' +
-                        '<input type="hidden" name="productId'+no+'" class="Form-control" value="' + data.id + '" disabled >' +
-                        '<span>' + no + '</span>' +
+                    '<input type="hidden" name="productId' + no + '" class="form-control" value="' + data.id + '">' +
+                    '<span>' + no + '</span>' +
                     '</td>' +
                     '<td>' +
-                        '<input type="text" name="productName'+no+'" class="Form-control" value="' + data.name + '">' +
+                    '<input type="text" name="productName' + no + '" class="form-control" value="' + data.name + '" >' +
                     '</td>' +
                     '<td>' +
-                        '<input type="number" name="price'+no+'" class="Form-control" value="' + data.price + '" disabled>' +
+                    '<input type="text" name="price' + no + '" class="form-control" value="' + data.price + '" >' +
                     '</td>' +
                     '<td>' +
-                        '<input type="number" name="qty'+no+'" class="Form-control" oninput="sumQty('+no+',this.value)">' +
+                    '<input type="number" name="qty' + no + '" class="form-control" oninput="sumQty(' + no + ',this.value)">' +
                     '</td>' +
                     '<td>' +
-                        '<input type="number" name="sub_total'+no+'" class="Form-control" disabled>' +
+                    '<input type="number" name="sub_total' + no + '" class="form-control" >' +
                     '</td>' +
                     '</tr>';
 
@@ -149,11 +139,11 @@
         });
     }
 
-    function sumQty(no,q) {
-        var price = $("input[name=price"+no+"]").val();
-        var subtotal = q *parseInt(price);
-        $("input[name=sub_total"+no+"]").val(subtotal);
-        console.log(q+"*"+price+"="+subtotal);
+    function sumQty(no, q) {
+        var price = $("input[name=price" + no + "]").val();
+        var subtotal = q * parseInt(price);
+        $("input[name=sub_total" + no + "]").val(subtotal);
+        console.log(q + "*" + price + "=" + subtotal);
     }
 </script>
 @endsection
