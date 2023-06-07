@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class RABDetails extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'no_rab',
+        'id_product',
+        'name',
+        'price',
+        'qty',
+        'sub_total',
+    ];
 }

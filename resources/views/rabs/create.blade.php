@@ -61,9 +61,21 @@
                         </tr>
                     </thead>
                     <tbody id="detail">
-                       
+
                     </tbody>
                 </table>
+
+                <div class="row col-xs-12 col-sm-12 col-md-12 mt-3">
+                    <input type="hidden" name="jml" class="form-control">
+                    <div class="form-group">
+                        <strong>Grand Total :</strong>
+                        <input type="text" name="total" class="form-control" placeholder="Rp. 0">
+                        @error('tgl_rab')
+                        <div class="alert alert-danger mt-1 mb-1">{{$message}}</div>
+                        @enderror
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -94,7 +106,19 @@
         select: function(event, ui) {
             $('#search').val(ui.item.label);
             // console.log(ui.item);
-            add(ui.item.id);
+            if ($("input[name=jml]").val() > 0) {
+                for (let i = 0; i < $("input[name=jml]").val(); i++) {
+                    id = $("input[name=productId" + 1 + "]").val();
+                    if (id == ui.item.id) {
+                        alert(ui.item.value + ' sudah ada!');
+                        break;
+                    } else {
+                        add(ui.item.id);
+                    }
+                }
+            } else {
+                add(ui.item.id);
+            }
             return false;
         }
     });
@@ -135,6 +159,7 @@
                     '</tr>';
 
                 $('#detail').html(html);
+                $("input[name=jml]").val(no);
             }
         });
     }
@@ -144,6 +169,17 @@
         var subtotal = q * parseInt(price);
         $("input[name=sub_total" + no + "]").val(subtotal);
         console.log(q + "*" + price + "=" + subtotal);
+        sumTotal();
+    }
+
+
+    function sumTotal() {
+        var total = 0;
+        for (let i = 1; i <= $("input[name=jml]").val(); i++) {
+            var sub = $("input[name=sub_total" + i + "]").val();
+            total = parseInt(total) + parseInt(sub);
+        }
+        $("input[name=total]").val(total);
     }
 </script>
 @endsection

@@ -18,6 +18,7 @@
         </ul>
 
         <a class="btn btn-success" href="{{ route('rabs.create') }}"> <i class="fa fa-plus"></i> Add Rabs</a>
+
     </div>
 </div>
 @endsection
