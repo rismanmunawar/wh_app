@@ -10,8 +10,8 @@ class RAB extends Model
     use HasFactory;
     protected $fillable = [
         'no_rab',
-        'penyusun',
+        'id_penyusun',
         'tgl_rab',
-        'total',
+        'total'
     ];
 }

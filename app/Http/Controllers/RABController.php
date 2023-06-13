@@ -1,27 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\RAB;
-use App\Models\User;
 use App\Models\RABDetails;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RABController extends Controller
 {
     public function index()
-    {
+    {   
         $title = "Data RAB";
-        $rabs = RAB::orderBy('id', 'asc')->get();
-        return view('rabs.index', compact('rabs', 'title'));
+        $rabs = RAB::orderBy('id','asc')->paginate(5);
+        return view('rabs.index', compact(['rabs' , 'title']));
     }
 
     public function create()
     {
-        $title = "Add Data RAB";
-        $managers = User::Where('position', '1')->get();
+        $title = "Tambah Data RAB";
+        $managers = User::where('position', '1')->orderBy('id','asc')->get();
         return view('rabs.create', compact('title', 'managers'));
     }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -31,7 +31,7 @@ class RABController extends Controller
             'no_rab' => $request->no_rab,
             'penyusun' => $request->penyusun,
             'tgl_rab' => $request->tgl_rab,
-            'total' => $request->total,
+            'sub_total' => $request->total,
         ];
 
         if ($result = RAB::create($rab)) {
@@ -56,39 +56,48 @@ class RABController extends Controller
         return redirect()->route('rabs.index')->with('success', 'RAB has been created successfully.');
     }
 
+    public function show(RAB $rab)
+    {
+        return view('rabs.show',compact('Departement'));
+    }
+
     public function edit(RAB $rab)
     {
         $title = "Edit Data RAB";
-        // $managers = User::Where('position', 'manager')->get();
-        // return view('rabs.edit', compact('RAB', "managers", 'title'));
-        $managers = User::Where('position', '1')->orderBy('id', 'asc')->get();
-        $details = RABDetails::Where('no_rab', $rab->no_rab)->orderBy('id', 'asc')->get();
-        return view('rabs.edit', compact('rab', 'title', 'managers', 'detail'));
+        $managers = User::where('position', '1')->orderBy('id','asc')->get();
+        $detail = RABDetails::where('no_rab', $rab->no_rab)->orderBy('id','asc')->get();
+        return view('rabs.edit',compact('rab' , 'title', 'managers', 'detail'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\company  $company
-     * @return \Illuminate\Http\Response
-     */
 
     public function update(Request $request, RAB $rab)
     {
-        $request->validate([
-            'no_rab' => 'required'
-        ]);
+        $rabs = [
+            'no_rab' => $rab->no_rab,
+            'id_penyusun' => $request->id_penyusun,
+            'tgl_rab' => $request->tgl_rab,
+            'sub_total' => $request->total,
+        ];
+        if($rab->fill($rabs)->save()){
+            RABDetails::where('no_rab', $rab->no_rab)->delete();
+            for ($i=1; $i <= $request->jml; $i++) { 
+                $details = [
+                    'no_rab' => $rab->no_rab,
+                    'id_product' => $request['productId'.$i],
+                    'product_name' => $request['productName'.$i],
+                    'price' => $request['price'.$i],
+                    'qty' => $request['qty'.$i],
+                    'sub_total' => $request['sub_total'.$i],
+                ];
+                RABDetails::create($details);
+            }
+        }           
 
-        // $rab->fill($request->post())->save();
-        $rab->fill($request->post())->save();
-
-        return redirect()->route('rabs.index')->with('success', 'RAB Has Been updated successfully');
+        return redirect()->route('rabs.index')->with('success','Departement Has Been updated successfully');
     }
 
     public function destroy(RAB $rab)
     {
         $rab->delete();
-        return redirect()->route('rabs.index')->with('success', 'RAB has been deleted successfully');
+        return redirect()->route('rabs.index')->with('success','Departement has been deleted successfully');
     }
 }
