@@ -40,9 +40,10 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(
     function () {
-        Route::get('/', function () {
-            return view('home', ['title' => 'Home']);
-        })->name('home');
+        // Route::get('/', function () {
+        //     return view('home', ['title' => 'Home']);
+        // })->name('home');
+
         Route::resource('positions', PositionController::class);
         Route::resource('departments', DepartmentController::class);
         Route::resource('users', UserDashboardController::class);
@@ -51,9 +52,20 @@ Route::middleware('auth')->group(
         Route::get('department/exportPdf', [DepartmentController::class, 'exportPdf']);
         Route::get('position/export-excel', [PositionController::class, 'exportExcel'])->name('positions.exportExcel');
         Route::resource('rabs', RABController::class);
-        
-        Route::get('search/product', 
-        [ProductController::class, 'autocomplete']
+
+        Route::get(
+            '/',
+            [RABController::class, 'chartLine']
+        )->name('home');
+
+        Route::get(
+            'chart-line-ajax',
+            [RABController::class, 'chartLineAjax']
+        )->name('rabs.chartLineAjax');
+
+        Route::get(
+            'search/product',
+            [ProductController::class, 'autocomplete']
         )->name('search.product');
 
         Route::resource('products', ProductController::class);

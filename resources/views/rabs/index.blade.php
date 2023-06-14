@@ -1,52 +1,57 @@
 @extends('sidebar')
 @section('content')
 @if(session('success'))
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Hai {{ Auth()->user()->name }} </strong> {{ session('success') }}
+<div class="alert alert-success  alert-dismissible fade show" role="alert">
+    {{ session('success') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
-
 <div class="text-end mb-2">
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="printDropdown" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <i class="fas fa-print"></i> Cetak
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="printDropdown">
-            <li><a class="dropdown-item" href="department/exportPdf" target="_blank"><i class="fas fa-file-word"></i>
-                    Word</a></li>
-            <li><a class="dropdown-item" href="position/export-excel" target="_blank"><i class="fas fa-file-excel"></i>
-                    Excel</a></li>
-        </ul>
-
-        <a class="btn btn-success" href="{{ route('rabs.create') }}"> <i class="fa fa-plus"></i> Add Rabs</a>
-
-    </div>
+    <a class="btn btn-secondary" href="{{ route('rabs.create') }}"> Add RAB</a>
 </div>
-
-<table id="example" class="table table-hover" style="width:100%">
-    <thead class="thead-dark">
-        <tr class="table-active">
-            <th scope="col">No</th>
-            <th scope="col">Nama Product</th>
-            <th scope="col">Price</th>
-            <th scope="col">QTY</th>
-            <th scope="col">Sub Total</th>
+<table id="example" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">NO RAB</th>
+            <th scope="col">Tanggal RAB</th>
+            <th scope="col">Penyusun</th>
+            <th scope="col">Jumlah</th>
+            <!-- <th scope="col">Total</th> -->
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
-        <?php $i = 1; ?>
-       
+        @foreach ($rabs as $data)
+        <tr>
+            <td>{{ $data->id }}</td>
+            <td>{{ $data->no_rab }}</td>
+            <td>{{ $data->tgl_rab }}</td>
+            <td>{{
+          (isset($data->getManager->name)) ?
+          $data->getManager->name :
+          'Tidak Ada'
+          }}
+            </td>
+            <td>{{ $data->detail->count() }}</td>
+            <td>{{ $data->total }}</td>
+            <td>
+                <form action="{{ route('rabs.destroy',$data->id) }}" method="Post">
+                    <a class="btn btn-primary" href="{{ route('rabs.edit',$data->id) }}">Edit</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
     </tbody>
 </table>
 @endsection
 @section('js')
 <script>
-$(document).ready(function() {
-    $('#example').DataTable();
-});
-
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
 </script>
 @endsection
