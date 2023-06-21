@@ -1,0 +1,18 @@
+body {
+  background-image: url("./public/img/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+  .table-hover-color:hover {
+    background-color: #444e4e;
+  }
+  .card {
+    /* background-color: #007bff; */
+    border: 1px solid #c6c6c6;
+  }
