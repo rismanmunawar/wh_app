@@ -17,7 +17,8 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Lokasi :</strong>
-                <input type="text" name="location" value="{{ $department->location}}" class="form-control" placeholder="location">
+                <input type="text" name="location" value="{{ $department->location}}" class="form-control"
+                    placeholder="location">
                 @error('location')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
@@ -25,13 +26,15 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Manager :</strong>
-                <select name="manager_id" class="form-control">
-                    @foreach ($managers as $manager)
-                    <option value="{{ $manager->id}}" {{($department->manager_id == $manager->id) ? 'selected' : ''}}>{{$manager->name}}</option>
+                <strong>Manager:</strong>
+                <select name="manager_id" id="manager_id" class="form-select">
+                    <option value="">Pilih</option>
+                    @foreach($managers as $item)
+                    <option value="{{ $item->id }}" {{ ($item->id == $departement->manager_id) ? 'selected' : ''}}>
+                        {{ $item->name }}</option>
                     @endforeach
                 </select>
-                @error('manager_id')
+                @error('alias')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
             </div>

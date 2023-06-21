@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('goods', function (Blueprint $table) {
             $table->id();
             $table->foreignId('warehouse_id')->constrained('warehouses');
-            $table->string('nama');
-            $table->decimal('harga', 8, 2);
-            $table->integer('stok');
+            $table->string('nama')->nullable();
+            $table->integer('harga')->nullable();
             $table->timestamps();
         });
     }

@@ -63,6 +63,7 @@ Route::middleware('auth')->group(
             [RABController::class, 'chartLineAjax']
         )->name('rabs.chartLineAjax');
 
+
         Route::get(
             'search/product',
             [ProductController::class, 'autocomplete']

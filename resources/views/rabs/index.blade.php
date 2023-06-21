@@ -12,12 +12,12 @@
 <table id="example" class="table table-striped" style="width:100%">
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">NO RAB</th>
+            <th scope="col">No</th>
+            <th scope="col">No RAB</th>
             <th scope="col">Tanggal RAB</th>
-            <th scope="col">Penyusun</th>
+            <th scope="col">Manager Name</th>
             <th scope="col">Jumlah</th>
-            <!-- <th scope="col">Total</th> -->
+            <th scope="col">Total</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
@@ -28,8 +28,8 @@
             <td>{{ $data->no_rab }}</td>
             <td>{{ $data->tgl_rab }}</td>
             <td>{{
-          (isset($data->getManager->name)) ?
-          $data->getManager->name :
+          (isset($data->getManager->name)) ? 
+          $data->getManager->name : 
           'Tidak Ada'
           }}
             </td>

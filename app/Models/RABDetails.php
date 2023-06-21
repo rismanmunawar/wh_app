@@ -9,14 +9,14 @@ class RABDetails extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'no_rab' ,
+        'no_rab',
         'id_product',
-        'price' ,
-        'qty' ,
-        'sub_total' ,
+        'price',
+        'qty',
+        'sub_total',
     ];
-    public function getProduct(){
+    public function getProduct()
+    {
         return $this->belongsTo(Product::class, 'id_product', 'id');
     }
-
 }

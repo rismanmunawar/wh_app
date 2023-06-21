@@ -27,15 +27,6 @@
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="form-group">
-                <strong>Stok :</strong>
-                <input type="text" name="stok" class="form-control" placeholder="Masukan Harga">
-                @error('stok')
-                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                @enderror
-            </div>
-
-
             <button type="submit" class="btn btn-primary mt-4">Submit</button>
             <a button type="submit" class="btn btn-danger mt-4" href="{{ route('goods.index') }}">Back</a>
         </div>

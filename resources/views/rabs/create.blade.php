@@ -1,6 +1,5 @@
 @extends('sidebar')
 @section('content')
-
 <form action="{{ route('rabs.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row">
@@ -134,17 +133,21 @@
                 no++;
                 html += '<tr>' +
                     '<td>' +
-                    '<input type="hidden" name="productId' + no + '" class="form-control" value="' + data.id + '">' +
+                    '<input type="hidden" name="productId' + no + '" class="form-control" value="' + data.id +
+                    '">' +
                     '<span>' + no + '</span>' +
                     '</td>' +
                     '<td>' +
-                    '<input type="text" name="productName' + no + '" class="form-control" value="' + data.name + '" >' +
+                    '<input type="text" name="productName' + no + '" class="form-control" value="' + data.name +
+                    '" >' +
                     '</td>' +
                     '<td>' +
-                    '<input type="text" name="price' + no + '" class="form-control" value="' + data.price + '" >' +
+                    '<input type="text" name="price' + no + '" class="form-control" value="' + data.price +
+                    '" >' +
                     '</td>' +
                     '<td>' +
-                    '<input type="number" name="qty' + no + '" class="form-control" oninput="sumQty(' + no + ',this.value)">' +
+                    '<input type="number" name="qty' + no + '" class="form-control" oninput="sumQty(' + no +
+                    ',this.value)">' +
                     '</td>' +
                     '<td>' +
                     '<input type="number" name="sub_total' + no + '" class="form-control" >' +
@@ -172,7 +175,7 @@
         var total = 0;
         for (let i = 1; i <= $("input[name=jml]").val(); i++) {
             var sub = $("input[name=sub_total" + i + "]").val();
-            total = parseInt(total) + parseInt(sub);
+            total = total + parseInt(sub);
         }
         $("input[name=total]").val(total);
     }

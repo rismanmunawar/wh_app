@@ -12,7 +12,7 @@ class RAB extends Model
         'no_rab',
         'id_penyusun',
         'tgl_rab',
-        'total'
+        'sub_total'
     ];
 
     public function detail()

@@ -27,15 +27,14 @@ class RABController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'no_rab' => 'required',
+            'no_rab' => 'required'
         ]);
         $rab = [
             'no_rab' => $request->no_rab,
-            'penyusun' => $request->penyusun,
+            'id_penyusun' => $request->id_penyusun,
             'tgl_rab' => $request->tgl_rab,
-            'sub_total' => $request->total,
+            'total' => $request->total,
         ];
-
         if ($result = RAB::create($rab)) {
             for ($i = 1; $i <= $request->jml; $i++) {
                 $details = [
@@ -46,14 +45,9 @@ class RABController extends Controller
                     'qty' => $request['qty' . $i],
                     'sub_total' => $request['sub_total' . $i],
                 ];
-                RABDetails::create($request->post());
+                RABDetails::create($details);
             }
         }
-
-
-
-        // dd($rab, $details);
-        RABDetails::create($request->post());
 
         return redirect()->route('rabs.index')->with('success', 'RAB has been created successfully.');
     }
@@ -77,7 +71,7 @@ class RABController extends Controller
             'no_rab' => $rab->no_rab,
             'id_penyusun' => $request->id_penyusun,
             'tgl_rab' => $request->tgl_rab,
-            'sub_total' => $request->total,
+            'total' => $request->total,
         ];
         if ($rab->fill($rabs)->save()) {
             RABDetails::where('no_rab', $rab->no_rab)->delete();
@@ -128,7 +122,7 @@ class RABController extends Controller
 
         $chart = new RabLineChart;
 
-        $chart->dataset('RAB Chart', 'line', $rabs)->options([
+        $chart->dataset('RAB Chart', 'bar', $rabs)->options([
             'fill' => 'true',
             'borderColor' => '#51C1C0'
         ]);

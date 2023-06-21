@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('no_rab')->nullable();
             $table->date('tgl_rab')->nullable();
             $table->integer('id_penyusun')->nullable();
-            $table->integer('sub_total')->nullable();
+            $table->integer('total')->nullable();
             $table->timestamps();
         });
     }

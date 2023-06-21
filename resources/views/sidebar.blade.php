@@ -7,13 +7,15 @@
     <title>WhApp | Web FrameWork</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins')}}/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{asset('AdminLTE/plugins')}}/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet"
+        href="{{asset('AdminLTE/plugins')}}/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins')}}/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
@@ -45,7 +47,8 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{asset('AdminLTE/dist')}}/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="{{asset('AdminLTE/dist')}}/img/AdminLTELogo.png" alt="AdminLTELogo"
+                height="60" width="60">
         </div>
 
         <!-- Navbar -->
@@ -60,14 +63,18 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <div class="text-center" style="display: flex; align-items: center;margin-left:20px;">
-                <img src="{{asset('AdminLTE/dist')}}/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8; width: 50px; height: 50px; margin-right: 10px;margin-top: 10px;">
-                <span class="brand-text" style="font-size: 23px; margin-top: 10px; color: white;">Wh<strong>App</strong></span>
+                <img src="{{asset('AdminLTE/dist')}}/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3"
+                    style="opacity: .8; width: 50px; height: 50px; margin-right: 10px;margin-top: 10px;">
+                <span class="brand-text"
+                    style="font-size: 23px; margin-top: 10px; color: white;">Wh<strong>App</strong></span>
             </div>
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
@@ -131,29 +138,11 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-cube"></i>
-                                <p>
-                                    Master Data RAB
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('warehouses.index')}}" class="nav-link">
-                                    <i class="fas fa-box"></i>
-                                        <p>Product</p>
-                                    </a>
-                                </li>
-                            </ul>
-
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('rabs.index')}}" class="nav-link">
                                         <i class="fas fa-dollar-sign"></i>
-                                        <p>Rabs</p>
+                                        <p>Rabs WareHouse</p>
                                     </a>
                                 </li>
                             </ul>
@@ -195,7 +184,8 @@
                         <section class="content">
                             <div class="container-fluid">
                                 <div class="card">
-                                    <h1 class="card-header" style="background-color: #343A40; color:aliceblue">@yield('title',$title)</h1>
+                                    <h1 class="card-header" style="background-color: #343A40; color:aliceblue">
+                                        @yield('title',$title)</h1>
                                     <div class="card-body">
                                         @yield('content')
                                     </div>
@@ -233,7 +223,7 @@
     <script src="{{asset('AdminLTE/plugins')}}/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-        $.widget.bridge('uibutton', $.ui.button)
+    $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="{{asset('AdminLTE/plugins')}}/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -265,13 +255,13 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                // Konfigurasi kalender, misalnya sumber acara, tampilan, dll.
-            });
-            calendar.render();
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            // Konfigurasi kalender, misalnya sumber acara, tampilan, dll.
         });
+        calendar.render();
+    });
     </script>
     <!-- JQuery Datatables -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

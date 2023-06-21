@@ -23,9 +23,9 @@ class GoodController extends Controller
     public function create(Good $good)
     {
         $title = "Add Data Goods";
-        $goods = Good::Where('id','good')->get();
+        $goods = Good::Where('id', 'good')->get();
         $warehouses = Warehouse::all();
-        return view('goods.create', compact('good', 'title','warehouses'));
+        return view('goods.create', compact('good', 'title', 'warehouses'));
     }
 
     /**
@@ -40,13 +40,14 @@ class GoodController extends Controller
             'warehouse_id' => 'required',
             'nama' => 'required',
             'harga' => 'required',
-            'stok' => 'required',
         ]);
 
         Good::create($request->post());
 
         return redirect()->route('goods.index')->with('success', 'Goods has been created successfully.');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -67,10 +68,11 @@ class GoodController extends Controller
      */
     public function edit(Good $good)
     {
-        $title = "Edit Data user";
+        $title = "Edit Data Good";
         $warehouses = Warehouse::all();
-        return view('goods.edit', compact('goods', 'title','warehouses'));
+        return view('goods.edit', compact('good', 'title', 'warehouses'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -79,9 +81,17 @@ class GoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Good $good)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'location' => 'required',
+            'manager_id' => 'required',
+        ]);
+
+        $good->fill($request->post())->save();
+
+        return redirect()->route('goods.index')->with('success', 'good Has Been updated successfully');
     }
 
     /**

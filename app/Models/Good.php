@@ -14,10 +14,9 @@ class Good extends Model
         'warehouse_id',
         'nama',
         'harga',
-        'stok',
     ];
-    public function warehouses()
+    public function warehouse()
     {
-        return $this->belongsTo(Warehouse::class, 'warehouse_id','id');
+        return $this->belongsTo(Warehouse::class, 'warehouse_id');
     }
 }
