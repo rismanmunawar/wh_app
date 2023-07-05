@@ -49,6 +49,7 @@ Route::middleware('auth')->group(
         Route::resource('users', UserDashboardController::class);
         Route::resource('warehouses', WarehouseController::class);
         Route::resource('goods', GoodController::class);
+        Route::resource('products', ProductController::class);
         Route::get('department/exportPdf', [DepartmentController::class, 'exportPdf']);
         Route::get('position/export-excel', [PositionController::class, 'exportExcel'])->name('positions.exportExcel');
         Route::resource('rabs', RABController::class);
